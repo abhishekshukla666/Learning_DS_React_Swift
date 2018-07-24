@@ -8,7 +8,7 @@ class LLNode<T> {
     var previous: LLNode?
 }
 
-class LinkedList<T> {
+class LinkedList<T: Comparable> {
    
     // new instance
     private var head = LLNode<T>()
@@ -32,6 +32,19 @@ class LinkedList<T> {
             } else {
                 current = current?.next
             }
+        }
+    }
+    
+    func remove(element key: T) {
+        var current: LLNode<T>? = head
+        while current != nil, current?.key != nil {
+            if key == current?.key {
+                let previous = current?.previous
+                let next = current?.next
+                previous?.next = next
+                return
+            }
+            current = current?.next
         }
     }
     
@@ -69,40 +82,24 @@ class LinkedList<T> {
 }
 
 
-let array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+let array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let ll1 = LinkedList<Int>()
 for i in array1 {
     ll1.append(element: i)
 }
 
-let array2 = [11, 12, 13, 14, 15, 16, 17, 18, 19]
+let array2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 let ll2 = LinkedList<Int>()
 for i in array2 {
     ll2.append(element: i)
 }
 
-//ll1.printAllKeys()
-ll1.reverse()
-//ll2.printAllKeys()
+ll1.remove(element: 4)
+
 ll1.printAllKeys()
-
-func reverse(linkedList headNode: LLNode<Int>?) -> LLNode<Int>? {
-    
-    guard headNode != nil else { return nil }
-    let p = headNode
-    var q = p?.next
-    guard q != nil else { return nil }
-    q = reverse(linkedList: q)
-    p?.next?.next = p
-    p?.next = nil
-    return q
-}
-
-var reverseHeadNode = reverse(linkedList: ll1.firstNode())
-while reverseHeadNode != nil {
-    print(reverseHeadNode?.key ?? -1)
-    reverseHeadNode = reverseHeadNode?.next
-}
+//ll1.reverse()
+//ll2.printAllKeys()
+//ll1.printAllKeys()
 
 func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> LLNode<Int>? {
     var head: LLNode<Int>? = nil
@@ -138,6 +135,7 @@ func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> L
 }
 
 var sortingNode = mergeLLNode(element: ll1.firstNode(), q: ll2.firstNode(), s: nil)
+
 while sortingNode != nil {
 //    print(sortingNode?.key ?? -1)
     sortingNode = sortingNode?.next
