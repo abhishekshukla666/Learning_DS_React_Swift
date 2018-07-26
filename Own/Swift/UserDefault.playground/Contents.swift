@@ -60,7 +60,7 @@ UserDefaults.standard.set(encodedData2, forKey: "People")
 // Decode
 if let data = UserDefaults.standard.data(forKey: "People"),
     let myPeopleList = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Person] {
-    myPeopleList.forEach({print( $0.name, $0.age)})  // Joe 10
+    myPeopleList.forEach({print( $0.name, $0.age)})
 } else {
     print("There is an issue")
 }
