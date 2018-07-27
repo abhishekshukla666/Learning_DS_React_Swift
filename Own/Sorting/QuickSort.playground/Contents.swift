@@ -35,7 +35,6 @@ func partition<T: Comparable>(_ array: inout [T], low: Int, high: Int, isOrdered
         }
     }
     array.swapAt(i, high)
-    print("Partionaly Array: \(array)")
     return i
 }
 

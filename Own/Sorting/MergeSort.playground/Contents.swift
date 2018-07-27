@@ -28,5 +28,5 @@ func merge<T: Comparable>(pile leftPile: [T], rightPile: [T], isOrderedBefore: (
     return sortedArray + right + left
 }
 
-let unsortedArray = [3]
+let unsortedArray = [3, 4, 1, 9, 2]
 let sortedArray = mergeSort(unsortedArray, isOrderedBefore: <)

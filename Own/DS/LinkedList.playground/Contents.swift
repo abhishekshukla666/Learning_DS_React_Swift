@@ -137,6 +137,6 @@ func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> L
 var sortingNode = mergeLLNode(element: ll1.firstNode(), q: ll2.firstNode(), s: nil)
 
 while sortingNode != nil {
-//    print(sortingNode?.key ?? -1)
+    print(sortingNode?.key ?? -1)
     sortingNode = sortingNode?.next
 }

@@ -6,8 +6,6 @@ extension String {
     subscript (i: Int) -> Character {
         return self[index(startIndex, offsetBy: i)]
     }
-    
-    
 }
 
 func swap<T>(element a: inout T, b: inout T) {
