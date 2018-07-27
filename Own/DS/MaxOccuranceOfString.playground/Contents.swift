@@ -2,34 +2,20 @@
 
 import Foundation
 
-var str = "sachin thakur"
+var str = "Abhishek Shukla"
 
-extension String {
-    subscript (i: Int) -> Character {
-        return self[index(startIndex, offsetBy: i)]
-    }
-}
 func maxOccaranceOf(string str: String) -> (String, Int) {
     var occurance = [String: Int]()
-    for i in str {
-        if occurance["\(i)"] == nil {
-            occurance["\(i)"] = 1
-        } else {
-            if let count = occurance["\(i)"] {
-                occurance["\(i)"] = count + 1
-            }
-        }
+    for i in str.lowercased() {
+        if occurance["\(i)"] == nil { occurance["\(i)"] = 1 }
+        else if let count = occurance["\(i)"] { occurance["\(i)"] = count + 1 }
     }
     print(occurance)
     
     var finalChar = ""
     var count = 0
     for (key, value) in occurance {
-        if count == 0 {
-            count = value
-            finalChar = key
-        }
-        else if value > count {
+        if count < value {
             count = value
             finalChar = ""
             finalChar = key
