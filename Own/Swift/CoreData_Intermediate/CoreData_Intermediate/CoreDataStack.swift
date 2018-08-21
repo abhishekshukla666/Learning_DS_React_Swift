@@ -10,7 +10,30 @@ import Foundation
 import CoreData
 
 class CoreDataStack: NSObject {
+    
+    static let sharedInstance = CoreDataStack()
+    private override init() { }
+    
     static let moduleName = "myDevices"
+    
+    func saveMainContext () {
+        guard managedObjectContext.hasChanges || privateManagedObjectContext.hasChanges else { return }
+        managedObjectContext.performAndWait {
+            do {
+                try managedObjectContext.save()
+            } catch let error {
+                fatalError("Error saving main managed object context: \(error)")
+            }
+        }
+        
+        privateManagedObjectContext.perform {
+            do {
+                try self.privateManagedObjectContext.save()
+            } catch let error {
+                fatalError("Error saving main managed object context: \(error)")
+            }
+        }
+    }
     
     lazy var managedObjectModel: NSManagedObjectModel? = {
         guard let modelUrl = Bundle.main.url(forResource: CoreDataStack.moduleName, withExtension: "momd") else { return nil }
@@ -30,12 +53,22 @@ class CoreDataStack: NSObject {
         
         let persistanceStoreUrl = applicationDirectory.appendingPathComponent("\(CoreDataStack.moduleName).sqlite")
         do {
-            
+            try coordinate.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: persistanceStoreUrl, options: [NSMigratePersistentStoresAutomaticallyOption: true, NSInferMappingModelAutomaticallyOption: true])
         } catch let error {
             print("Persistance store error: \(error)")
         }
         return coordinate
     }()
     
+    private lazy var privateManagedObjectContext: NSManagedObjectContext = {
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.persistentStoreCoordinator = persistanceStoreCoordinate
+        return moc
+    }()
     
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        managedObjectContext.parent = privateManagedObjectContext
+        return managedObjectContext
+    }()
 }

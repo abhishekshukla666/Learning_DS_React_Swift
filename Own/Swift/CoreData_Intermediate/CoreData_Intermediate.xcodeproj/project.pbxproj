@@ -13,6 +13,11 @@
 		38622E93212BF36E00257D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38622E92212BF36E00257D58 /* Assets.xcassets */; };
 		38622E96212BF36E00257D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38622E94212BF36E00257D58 /* LaunchScreen.storyboard */; };
 		38622E9E212BF76C00257D58 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38622E9D212BF76C00257D58 /* CoreDataStack.swift */; };
+		51113E30212C329F00CB7115 /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51113E2F212C329F00CB7115 /* Device+CoreDataProperties.swift */; };
+		51CE4847212C222800533CA0 /* myDevices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51CE4845212C222800533CA0 /* myDevices.xcdatamodeld */; };
+		51CE484C212C233500533CA0 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE4848212C233500533CA0 /* Person+CoreDataClass.swift */; };
+		51CE484D212C233500533CA0 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE4849212C233500533CA0 /* Person+CoreDataProperties.swift */; };
+		51CE484E212C233500533CA0 /* Device+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CE484A212C233500533CA0 /* Device+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		38622E95212BF36E00257D58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38622E97212BF36E00257D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38622E9D212BF76C00257D58 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		51113E2F212C329F00CB7115 /* Device+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		51CE4846212C222800533CA0 /* myDevices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myDevices.xcdatamodel; sourceTree = "<group>"; };
+		51CE4848212C233500533CA0 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		51CE4849212C233500533CA0 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		51CE484A212C233500533CA0 /* Device+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,10 @@
 		38622E8A212BF36C00257D58 /* CoreData_Intermediate */ = {
 			isa = PBXGroup;
 			children = (
+				51CE4848212C233500533CA0 /* Person+CoreDataClass.swift */,
+				51CE4849212C233500533CA0 /* Person+CoreDataProperties.swift */,
+				51CE484A212C233500533CA0 /* Device+CoreDataClass.swift */,
+				51113E2F212C329F00CB7115 /* Device+CoreDataProperties.swift */,
 				38622E8B212BF36C00257D58 /* AppDelegate.swift */,
 				38622E8D212BF36C00257D58 /* ViewController.swift */,
 				38622E9D212BF76C00257D58 /* CoreDataStack.swift */,
@@ -63,6 +77,7 @@
 				38622E92212BF36E00257D58 /* Assets.xcassets */,
 				38622E94212BF36E00257D58 /* LaunchScreen.storyboard */,
 				38622E97212BF36E00257D58 /* Info.plist */,
+				51CE4845212C222800533CA0 /* myDevices.xcdatamodeld */,
 			);
 			path = CoreData_Intermediate;
 			sourceTree = "<group>";
@@ -140,7 +155,12 @@
 			files = (
 				38622E9E212BF76C00257D58 /* CoreDataStack.swift in Sources */,
 				38622E8E212BF36C00257D58 /* ViewController.swift in Sources */,
+				51CE484D212C233500533CA0 /* Person+CoreDataProperties.swift in Sources */,
+				51CE484E212C233500533CA0 /* Device+CoreDataClass.swift in Sources */,
+				51CE484C212C233500533CA0 /* Person+CoreDataClass.swift in Sources */,
+				51113E30212C329F00CB7115 /* Device+CoreDataProperties.swift in Sources */,
 				38622E8C212BF36C00257D58 /* AppDelegate.swift in Sources */,
+				51CE4847212C222800533CA0 /* myDevices.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		51CE4845212C222800533CA0 /* myDevices.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				51CE4846212C222800533CA0 /* myDevices.xcdatamodel */,
+			);
+			currentVersion = 51CE4846212C222800533CA0 /* myDevices.xcdatamodel */;
+			path = myDevices.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 38622E80212BF36C00257D58 /* Project object */;
 }
