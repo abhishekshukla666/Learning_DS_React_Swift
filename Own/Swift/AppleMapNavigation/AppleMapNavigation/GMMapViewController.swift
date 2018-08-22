@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GMMapViewController.swift
 //  AppleMapNavigation
 //
 //  Created by Abhishek on 01/08/18.
@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class ViewController: UIViewController {
+class GMMapViewController: UIViewController {
 
     let apiKey = "AIzaSyBzu64XvHEa6YobAWWEM-0vOhiLIjFkaDs"
     let pageTitle = "Google Maps"

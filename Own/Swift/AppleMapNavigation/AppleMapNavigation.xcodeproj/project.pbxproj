@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38F0EEBC21118ECC00D08382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0EEBB21118ECC00D08382 /* AppDelegate.swift */; };
-		38F0EEBE21118ECC00D08382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0EEBD21118ECC00D08382 /* ViewController.swift */; };
+		38F0EEBE21118ECC00D08382 /* GMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0EEBD21118ECC00D08382 /* GMMapViewController.swift */; };
 		38F0EEC121118ECC00D08382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F0EEBF21118ECC00D08382 /* Main.storyboard */; };
 		38F0EEC321118ED000D08382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F0EEC221118ED000D08382 /* Assets.xcassets */; };
 		38F0EEC621118ED000D08382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F0EEC421118ED000D08382 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		38F0EEB821118ECC00D08382 /* AppleMapNavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMapNavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F0EEBB21118ECC00D08382 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		38F0EEBD21118ECC00D08382 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		38F0EEBD21118ECC00D08382 /* GMMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMMapViewController.swift; sourceTree = "<group>"; };
 		38F0EEC021118ECC00D08382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38F0EEC221118ED000D08382 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38F0EEC521118ED000D08382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				38F0EEBB21118ECC00D08382 /* AppDelegate.swift */,
-				38F0EEBD21118ECC00D08382 /* ViewController.swift */,
+				38F0EEBD21118ECC00D08382 /* GMMapViewController.swift */,
 				38F0EECD2111B47700D08382 /* MKMapViewController.swift */,
 				38F0EEBF21118ECC00D08382 /* Main.storyboard */,
 				38F0EEC221118ED000D08382 /* Assets.xcassets */,
@@ -205,7 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38F0EEBE21118ECC00D08382 /* ViewController.swift in Sources */,
+				38F0EEBE21118ECC00D08382 /* GMMapViewController.swift in Sources */,
 				38F0EEBC21118ECC00D08382 /* AppDelegate.swift in Sources */,
 				38F0EECE2111B47700D08382 /* MKMapViewController.swift in Sources */,
 			);
