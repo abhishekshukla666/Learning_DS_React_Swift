@@ -1,6 +1,3 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
 
 class LLNode<T> {
     var key: T?
@@ -9,25 +6,21 @@ class LLNode<T> {
 }
 
 class LinkedList<T: Comparable> {
-   
-    // new instance
+    
     private var head = LLNode<T>()
     
     func append(element key: T) {
-        
         guard head.key != nil else {
             head.key = key
             return
         }
-        
         var current: LLNode<T>? = head
-        
         while current != nil {
             if current?.next == nil {
-                let childToUse = LLNode<T>()
-                childToUse.key = key
-                childToUse.previous = current
-                current?.next = childToUse
+                let childNode = LLNode<T>()
+                childNode.key = key
+                childNode.previous = current
+                current?.next = childNode
                 break
             } else {
                 current = current?.next
@@ -38,78 +31,68 @@ class LinkedList<T: Comparable> {
     func remove(element key: T) {
         var current: LLNode<T>? = head
         while current != nil, current?.key != nil {
-            if key == current?.key {
+            if ((current?.key = key) != nil) {
                 let previous = current?.previous
                 let next = current?.next
                 previous?.next = next
-                return
+            } else {
+                current = current?.next
             }
-            current = current?.next
         }
     }
     
     func printAllKeys() {
-        
         var current: LLNode<T>? = head
         while current != nil {
-            print("link item is: \(String(describing: current?.key!))")
+            print("Item: \(String(describing: current?.key))")
             current = current?.next
         }
     }
     
-    func reverse() {
-        
+    func reverseListIfPrevious() {
         var current: LLNode<T>? = head
-        var next: LLNode<T>? = nil
-
+        var next: LLNode<T>?
+        
         while current != nil {
-
             next = current?.next
             current?.next = current?.previous
             current?.previous = next
-
-            if next == nil {
-                head = current!
-            }
+            
+            if next == nil { head = current! }
             current = next
         }
     }
     
+    func reverseListIfNoPrevious() {
+        var current: LLNode<T>? = head
+        var next: LLNode<T>?
+        var previous: LLNode<T>?
+        
+        while current != nil {
+            next = current?.next
+            current?.next = previous
+            previous = current
+            head = current!
+            current = next
+            
+        }
+    }
+    
     func firstNode() -> LLNode<T>? {
-        let current: LLNode? = head
-        return current
+        return head
     }
 }
 
-
-let array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-let ll1 = LinkedList<Int>()
-for i in array1 {
-    ll1.append(element: i)
-}
-
-let array2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-let ll2 = LinkedList<Int>()
-for i in array2 {
-    ll2.append(element: i)
-}
-
-ll1.remove(element: 4)
-
-ll1.printAllKeys()
-//ll1.reverse()
-//ll2.printAllKeys()
-//ll1.printAllKeys()
-
-func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> LLNode<Int>? {
-    var head: LLNode<Int>? = nil
-    var p = p
-    var q = q
-    var s = s
-    if (p == nil) { return q }
-    if (q == nil) { return p }
-    if (p != nil && q != nil) {
-        if ((p?.key)! <= (q?.key)!) {
+func mergeTwoSortedLinkedList(_ ll1: LLNode<Int>?, ll2: LLNode<Int>?) -> LLNode<Int>? {
+    
+    var head: LLNode<Int>?
+    var p = ll1
+    var q = ll2
+    var s: LLNode<Int>?
+    if p == nil { return q }
+    if q == nil { return p }
+    if p != nil && q != nil {
+        if (p?.key)! <= (q?.key)! {
             s = p
             p = p?.next
         } else {
@@ -118,8 +101,8 @@ func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> L
         }
     }
     head = s
-    while (p != nil && q != nil) {
-        if ((p?.key)! < (q?.key)!) {
+    while (p != nil) && (q != nil) {
+        if (p?.key)! < (q?.key)! {
             s?.next = p
             s = p
             p = s?.next
@@ -129,14 +112,34 @@ func mergeLLNode(element p: LLNode<Int>?, q: LLNode<Int>?, s: LLNode<Int>?) -> L
             q = s?.next
         }
     }
-    if (p == nil) { s?.next = q }
-    if (q == nil) { s?.next = p }
+    
+    if p == nil { s?.next = q }
+    if q == nil { s?.next = p }
     return head
 }
 
-var sortingNode = mergeLLNode(element: ll1.firstNode(), q: ll2.firstNode(), s: nil)
+let ll1 = LinkedList<Int>()
+let oddNumbers = [1, 3, 5, 7, 9, 11]
 
-while sortingNode != nil {
-    print(sortingNode?.key ?? -1)
-    sortingNode = sortingNode?.next
-}
+let ll2 = LinkedList<Int>()
+let evenNumbers = [2, 4, 6, 8, 10]
+for number in oddNumbers { ll1.append(element: number) }
+for number in evenNumbers { ll2.append(element: number) }
+
+
+ll1.remove(element: 11)
+ll1.printAllKeys()
+//let sortedList = mergeTwoSortedLinkedList(ll1.firstNode(), ll2: ll2.firstNode())
+//var current = sortedList
+//while current != nil {
+//    print("Sorted Item: \(String(describing: current?.key))")
+//    current = current?.next
+//}
+
+//print(firstList.printAllKeys())
+//firstList.reverseListIfPrevious()
+//firstList.reverseListIfNoPrevious()
+//print(firstList.printAllKeys())
+
+
+
