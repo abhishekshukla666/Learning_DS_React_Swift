@@ -19,7 +19,7 @@ func isPalindrom(str: String) -> Bool {
         if first == last {
             str.removeFirst()
             str.removeLast()
-            print("First: \(str.first) \t Last: \(str.last) \n")
+            print("First: \(String(describing: str.first)) \t Last: \(String(describing: str.last)) \n")
             return isPalindrom(str: str)
         }
     }

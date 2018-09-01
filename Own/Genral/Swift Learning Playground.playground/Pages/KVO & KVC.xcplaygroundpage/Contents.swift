@@ -6,8 +6,8 @@ import UIKit
  */
 
 class User: NSObject {
-    
-    @objc dynamic var userName: String!
+
+    dynamic var userName: String!
     init(userName: String) {
         super.init()
         self.userName = userName
@@ -16,15 +16,15 @@ class User: NSObject {
 
 private var myContext = 0
 class UserManager: NSObject {
-    
+
     var user: User
     init(withUser user: User) {
         self.user = user
         super.init()
-        
+
         user.addObserver(self, forKeyPath: #keyPath(User.userName), options: .new, context: &myContext)
     }
-    
+
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &myContext {
             if let changedName = change?[.newKey]! as? String {

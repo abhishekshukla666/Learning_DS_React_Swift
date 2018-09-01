@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 import MapKit
 
 final class CurrentLocationAnnotation: NSObject, MKAnnotation {
@@ -57,23 +58,69 @@ class MKMapViewController: UIViewController {
     }
     
     func registerServices() {
-        mkMapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        
-        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-        let currentLocationAnnotation = CurrentLocationAnnotation(coordinate: coordinate, title: "PaytmMall", subtitle: "F1, Sector 6, Noida")
-        mkMapView.addAnnotation(currentLocationAnnotation)
+//        mkMapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+//
+//        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+//        let currentLocationAnnotation = CurrentLocationAnnotation(coordinate: coordinate, title: "PaytmMall", subtitle: "F1, Sector 6, Noida")
+//        mkMapView.addAnnotation(currentLocationAnnotation)
         
 //        let camera = MKMapCamera(lookingAtCenter: coordinate, fromDistance: 1, pitch: 1, heading: 0)
 //        mkMapView.setCamera(camera, animated: true)
         
+
+//        mkMapView.setRegion(currentLocationAnnotation.region, animated: true)
+//
+//        mkMapView.addSubview(currentPossitionButton)
         
-        mkMapView.setRegion(currentLocationAnnotation.region, animated: true)
+        let sourceCoordinate = CLLocationCoordinate2D(latitude: 39.173209, longitude: -94.593933)
+        let destinationCoordinate = CLLocationCoordinate2D(latitude: 38.643172, longitude: -90.177429)
+        let sourcePin = CurrentLocationAnnotation(coordinate: sourceCoordinate, title: "Connaught Place", subtitle: "Connaught Place")
+        let destinationPin = CurrentLocationAnnotation(coordinate: destinationCoordinate, title: "Railway Station", subtitle: "allaha")
+        mkMapView.addAnnotation(sourcePin)
+        mkMapView.addAnnotation(destinationPin)
+        prepareRoute()
+        mkMapView.delegate = self
+    }
+    
+    func prepareRoute() {
         
-        mkMapView.addSubview(currentPossitionButton)
+        let sourceCoordinate = CLLocationCoordinate2D(latitude: 39.173209, longitude: -94.593933)
+        let destinationCoordinate = CLLocationCoordinate2D(latitude: 38.643172, longitude: -90.177429)
+        let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinate)
+        let destinationPlaceMark = MKPlacemark(coordinate: destinationCoordinate)
+        
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = MKMapItem(placemark: sourcePlaceMark)
+        directionRequest.destination = MKMapItem(placemark: destinationPlaceMark)
+        directionRequest.transportType = .automobile
+        
+        let mapDirection = MKDirections(request: directionRequest)
+        mapDirection.calculate { (response, error) in
+            guard let directionResponse = response else {
+                if let error = error {
+                    print("Dirction Calculate ERROR: \(error.localizedDescription)")
+                }
+                return
+            }
+            
+            let route = directionResponse.routes[0]
+            self.mkMapView.add(route.polyline, level: .aboveRoads)
+            
+            let mapRect = route.polyline.boundingMapRect
+            self.mkMapView.setRegion(MKCoordinateRegionForMapRect(mapRect), animated: true)
+        }
     }
 }
 
 extension MKMapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .red
+        renderer.lineWidth = 3.0
+        return renderer
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let currentLocationAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView else { return nil }
         
