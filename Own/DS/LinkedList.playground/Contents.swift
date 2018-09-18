@@ -127,7 +127,7 @@ for number in oddNumbers { ll1.append(element: number) }
 for number in evenNumbers { ll2.append(element: number) }
 
 
-ll1.remove(element: 11)
+//ll1.remove(element: 11)
 ll1.printAllKeys()
 //let sortedList = mergeTwoSortedLinkedList(ll1.firstNode(), ll2: ll2.firstNode())
 //var current = sortedList
