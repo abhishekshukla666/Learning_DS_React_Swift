@@ -103,6 +103,19 @@ class BinaryTree<T: Comparable> {
         }
         return height
     }
+    
+    func diameterOfTree(node: BSNode<T>?) -> Int {
+        var diameter = 0
+        guard node?.key != nil else { return diameter }
+        let leftHeight = heightOfTree(node: node?.left)
+        let rightHeight = heightOfTree(node: node?.right)
+        let lDiameter = diameterOfTree(node: node?.left)
+        let rDiameter = diameterOfTree(node: node?.right)
+        let firstDiameter = leftHeight + rightHeight + 1
+        let secondDiameter = max(lDiameter, rDiameter)
+        diameter = max(firstDiameter, secondDiameter)
+        return diameter
+    }
 }
 
 
@@ -113,6 +126,9 @@ for n in numbers {
 }
 // Height of Tree
 //numberTree.heightOfTree(node: numberTree.root)
+
+// Diameter of Tree
+numberTree.diameterOfTree(node: numberTree.root)
 
 // Boundary of the tree
 //numberTree.printAntiClockBoundaryTree(node: numberTree.root)
