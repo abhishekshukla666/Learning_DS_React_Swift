@@ -52,7 +52,6 @@ public class AVLTree<T: Comparable> {
         print("\n\n\n")
     }
     
-    
 }
 
 let numberList = [8, 2, 10, 9, 11, 1, 7]
@@ -60,3 +59,5 @@ let tree = AVLTree<Int>()
 for number in numberList {
     tree.addNode(number)
 }
+
+

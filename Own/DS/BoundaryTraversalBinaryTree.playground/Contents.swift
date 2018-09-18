@@ -90,6 +90,19 @@ class BinaryTree<T: Comparable> {
         printLeafNodesTree(node: node)
         printRightBoundaryTree(node: node?.right)
     }
+    
+    func heightOfTree(node: BSNode<T>?) -> Int {
+        var height = 0
+        guard node?.key != nil else { return 0 }
+        let left = heightOfTree(node: node?.left)
+        let right = heightOfTree(node: node?.right)
+        if left > right {
+            height = 1 + left
+        } else {
+            height = 1 + right
+        }
+        return height
+    }
 }
 
 
@@ -98,5 +111,9 @@ let numberTree = BinaryTree<Int>()
 for n in numbers {
     numberTree.append(element: n)
 }
-numberTree.printAntiClockBoundaryTree(node: numberTree.root)
+// Height of Tree
+//numberTree.heightOfTree(node: numberTree.root)
+
+// Boundary of the tree
+//numberTree.printAntiClockBoundaryTree(node: numberTree.root)
 
