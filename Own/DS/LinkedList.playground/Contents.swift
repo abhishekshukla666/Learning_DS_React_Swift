@@ -129,12 +129,12 @@ for number in evenNumbers { ll2.append(element: number) }
 
 //ll1.remove(element: 11)
 ll1.printAllKeys()
-//let sortedList = mergeTwoSortedLinkedList(ll1.firstNode(), ll2: ll2.firstNode())
-//var current = sortedList
-//while current != nil {
-//    print("Sorted Item: \(String(describing: current?.key))")
-//    current = current?.next
-//}
+let sortedList = mergeTwoSortedLinkedList(ll1.firstNode(), ll2: ll2.firstNode())
+var current = sortedList
+while current != nil {
+    print("Sorted Item: \(String(describing: current?.key))")
+    current = current?.next
+}
 
 //print(firstList.printAllKeys())
 //firstList.reverseListIfPrevious()

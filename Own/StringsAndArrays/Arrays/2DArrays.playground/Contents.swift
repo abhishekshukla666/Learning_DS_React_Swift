@@ -31,7 +31,7 @@ for i in 0..<array.count - 2 {
     }
 }
 
-print(maxSum)
+//print(maxSum)
 
 //var sum = 0
 //for row in 0..<array.count {
@@ -39,3 +39,19 @@ print(maxSum)
 //        print(array[row][column])
 //    }
 //}
+
+
+
+let numberArr = [
+    [2, 0, 0],
+    [0, 3, 0],
+    [0, 0, 7]
+]
+
+for i in 0..<numberArr.count {
+//    print(numberArr[i])
+    for j in 0..<numberArr[i].count {
+        print("\(numberArr[i][j])")
+    }
+    
+}
