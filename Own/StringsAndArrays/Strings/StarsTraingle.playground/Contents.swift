@@ -10,12 +10,12 @@ for lineNumber in 1...treeHeight {
     var line = ""
     
     // Half the non-star space
-    let spaces = (treeWidth - stars) / 2
+//    let spaces = (treeWidth - stars)
 //    print("Spaces: \(spaces)\n")
     
-    if spaces > 0 {
-        line = String(repeating: " ", count: spaces)
-    }
+//    if spaces > 0 {
+//        line = String(repeating: " ", count: spaces)
+//    }
     
     line += String(repeating: "*", count: stars)
     print(line)
