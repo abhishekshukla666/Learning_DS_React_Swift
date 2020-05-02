@@ -2,29 +2,32 @@
 
 import UIKit
 
-var array = [1, 2, 3, 4, 5]
+var array = [1, 2, 3, 4, 5, 6]
 
-//func rotateArray(left atIndex: Int) {
-//    array.insert(array[atIndex], at: 0)
-//    array.remove(at: atIndex + 1)
-//}
+func rotateArray(left atIndex: Int) {
+    array.insert(array[atIndex], at: 0)
+    array.remove(at: atIndex + 1)
+}
 
-func moveElementToNext(index index: Int) -> [Int] {
+func moveElementToNext(index: Int) -> [Int] {
     if array.count < 2 { return array }
     var newArray = [Int]()
-    var counter = index
+    var leftRotationCounter = index
     var firstCounter = 0
-    for i in 0..<array.count {
-        if counter >= array.count {
+    for _ in 0..<array.count {
+        print(leftRotationCounter, array.count)
+        if leftRotationCounter >= array.count {
             newArray.append(array[firstCounter])
             firstCounter += 1
         } else {
-            newArray.append(array[counter])
+            newArray.append(array[leftRotationCounter])
         }
-        counter += 1
+        leftRotationCounter += 1
     }
     
     return newArray
 }
 
-print(moveElementToNext(index: 3))
+print(moveElementToNext(index: 2))
+//rotateArray(left: 4)
+//print(array)

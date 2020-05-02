@@ -52,6 +52,22 @@ class BinaryTree<T: Comparable> {
     - New Functions by own
     */
     
+    func printLeftTree() {
+        var currentNode = root
+        while currentNode.key != nil {
+            print(currentNode.key ?? -1)
+            currentNode = currentNode.left ?? BSNode()
+        }
+    }
+    
+    func printRightTree() {
+        var currentNode = root
+        while currentNode.key != nil {
+            print(currentNode.key ?? -1)
+            currentNode = currentNode.right ?? BSNode()
+        }
+    }
+    
     func printLeftBoundaryTree(node: BSNode<T>?) {
         guard node?.key != nil else { return }
         if node?.left != nil {
@@ -67,10 +83,10 @@ class BinaryTree<T: Comparable> {
         guard node?.key != nil else { return }
         if node?.right != nil {
             print(node?.key ?? -1)
-            printLeftBoundaryTree(node: node?.right)
+            printRightBoundaryTree(node: node?.right)
         } else if node?.left != nil {
             print(node?.key ?? -1)
-            printLeftBoundaryTree(node: node?.left)
+            printRightBoundaryTree(node: node?.left)
         }
     }
     
@@ -116,20 +132,59 @@ class BinaryTree<T: Comparable> {
         diameter = max(firstDiameter, secondDiameter)
         return diameter
     }
+    
+    func commonAncestor(left: Int, right: Int) -> Int {
+        var current = root
+        while (current.key != nil) {
+            if ((current.key as? Int)! > left &&
+                (current.key as? Int)! > right) {
+                current = current.left ?? BSNode()
+            } else if ((current.key as? Int)! < left &&
+                (current.key as? Int)! < right) {
+                current = current.right ?? BSNode()
+            } else {
+                break
+            }
+        }
+        return (current.key as? Int)!
+    }
 }
 
 
 let numbers = [20, 8, 22, 4, 3, 12 , 25, 10, 14]
+//let numbers = [4, 2, 3, 1, 7, 6]
 let numberTree = BinaryTree<Int>()
 for n in numbers {
     numberTree.append(element: n)
 }
+// Left Side of Tree
+//numberTree.printLeftTree()
+
+// Right Side of Tree
+//numberTree.printRightTree()
+
+// Left boundary of Tree
+//numberTree.printLeftBoundaryTree(node: numberTree.root)
+
+// Right boundary of Tree
+//numberTree.printRightBoundaryTree(node: numberTree.root)
+
 // Height of Tree
 //numberTree.heightOfTree(node: numberTree.root)
 
 // Diameter of Tree
-numberTree.diameterOfTree(node: numberTree.root)
+//numberTree.diameterOfTree(node: numberTree.root)
 
-// Boundary of the tree
+// Anti clock Boundary of the tree
 //numberTree.printAntiClockBoundaryTree(node: numberTree.root)
 
+// Common Ancestor
+/*
+       4
+      / \
+     2   7
+    / \
+   1   3
+ 
+ */
+numberTree.commonAncestor(left: 10, right: 14)
