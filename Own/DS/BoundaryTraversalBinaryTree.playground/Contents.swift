@@ -148,6 +148,19 @@ class BinaryTree<T: Comparable> {
         }
         return (current.key as? Int)!
     }
+    
+    func inOrderTraversal() -> [T] {
+        var orderedList = [T]()
+        
+        return orderedList
+    }
+    
+    func getAllNodeOfLeft(node: BSNode<T>) {
+        var currentNode = node
+        while currentNode.key != nil {
+            
+        }
+    }
 }
 
 

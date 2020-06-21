@@ -44,6 +44,6 @@ func numbWays(bottomUp n: Int, memo: [Int]) -> Int {
 
 
 var memo = [Int]()
-var floor = 7
+var floor = 3
 //print("Number of ways to reach to reach \(floor)th floor: \(numbWays(bottomUp: floor, memo: memo))")
 print("Number of ways to reach to reach \(floor)th floor: \(numbWays(dp: floor, memo: memo))")
